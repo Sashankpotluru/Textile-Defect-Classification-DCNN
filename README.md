@@ -84,16 +84,24 @@ The system classifies **12 types** of fabric defects:
 | SegNet | 93.63 | 70.6 | 91.5 | 80.5 |
 | **DCNN (Ours)** | **96.29** | **90.4** | **94.5** | **92.6** |
 
+### Detection Results (Figure 7)
+
+<p align="center">
+  <img src="docs/detection_results.png" alt="Detection Results" width="700"/>
+</p>
+
+*Figure 7: YOLOv7 detection results on fabric images — bounding boxes localizing broken end, broken yarn, nep, contamination, crease, knots, fuzzy ball, warp ball, and cut selvage defects.*
+
 ### Accuracy Comparison
 
 <p align="center">
-  <img src="docs/accuracy_comparison.png" alt="Accuracy Comparison" width="500"/>
+  <img src="docs/accuracy_comparison_paper.png" alt="Accuracy Comparison" width="500"/>
 </p>
 
 ### Metric-Based Comparison
 
 <p align="center">
-  <img src="docs/metric_comparison.png" alt="Metric Comparison" width="600"/>
+  <img src="docs/metric_comparison_paper.png" alt="Metric Comparison" width="600"/>
 </p>
 
 ### Training Curves
