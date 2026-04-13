@@ -12,24 +12,6 @@ Implementation of the paper *"Textile Defect Classification Using Deep Convoluti
 
 This research introduces an approach that combines DCNNs with YOLOv7 detection for fabric defect classification. The network architecture includes preprocessing, feature extraction using ResNet-50, defect detection using YOLOv7, and classification using a custom deep convolutional neural network. The system achieves an accuracy of **96.29%** on a dataset of 6,432 fabric images across 12 defect categories.
 
-## Architecture
-
-### Proposed Methodology Pipeline
-
-<p align="center">
-  <img src="docs/proposed_methodology.png" alt="Proposed Methodology" width="700"/>
-</p>
-
-*Figure 2: End-to-end pipeline — Input Image → Preprocessing → Feature Extraction (ResNet-50) → Detection (YOLOv7) → Classification (DCNN) → Output*
-
-### ResNet-50 Feature Extraction
-
-<p align="center">
-  <img src="docs/resnet50_architecture.png" alt="ResNet-50 Architecture" width="700"/>
-</p>
-
-*Figure 4: ResNet-50 architecture used for feature extraction. Four groups of residual blocks with skip connections, processing from 64 to 2048 feature channels.*
-
 **ResNet-50 Structure (Table 1):**
 
 | Layer | Configuration |
@@ -41,22 +23,6 @@ This research introduces an approach that combines DCNNs with YOLOv7 detection f
 | Residual Block 2 | (1x1, 128 → 3x3, 128 → 1x1, 512) x 12 |
 | Residual Block 3 | (1x1, 256 → 3x3, 256 → 1x1, 1024) x 18 |
 | Residual Block 4 | (1x1, 512 → 3x3, 512 → 1x1, 2048) x 3 |
-
-### YOLOv7-Tiny Detection
-
-<p align="center">
-  <img src="docs/yolov7_tiny_architecture.png" alt="YOLOv7-tiny Architecture" width="700"/>
-</p>
-
-*Figure 5: Tiny-YOLO V7 network structure with E-ELAN backbone, FPN neck, and detection head.*
-
-### Custom DCNN Classifier
-
-<p align="center">
-  <img src="docs/dcnn_architecture.png" alt="DCNN Architecture" width="700"/>
-</p>
-
-*Figure 6: Proposed dual-track deep convolutional neural network. Track 1: Conv layers with max-pooling for spatial features. Track 2: Dense layers for classification. Input: 150x150x3, Output: 12 defect classes.*
 
 ## Defect Categories
 
@@ -83,35 +49,6 @@ The system classifies **12 types** of fabric defects:
 | U-Net | 92.78 | 75.2 | 89.6 | 90.2 |
 | SegNet | 93.63 | 70.6 | 91.5 | 80.5 |
 | **DCNN (Ours)** | **96.29** | **90.4** | **94.5** | **92.6** |
-
-### Detection Results (Figure 7)
-
-<p align="center">
-  <img src="docs/detection_results.png" alt="Detection Results" width="700"/>
-</p>
-
-*Figure 7: YOLOv7 detection results on fabric images — bounding boxes localizing broken end, broken yarn, nep, contamination, crease, knots, fuzzy ball, warp ball, and cut selvage defects.*
-
-### Accuracy Comparison
-
-<p align="center">
-  <img src="docs/accuracy_comparison_paper.png" alt="Accuracy Comparison" width="500"/>
-</p>
-
-### Metric-Based Comparison
-
-<p align="center">
-  <img src="docs/metric_comparison_paper.png" alt="Metric Comparison" width="600"/>
-</p>
-
-### Training Curves
-
-<p align="center">
-  <img src="docs/training_accuracy.png" alt="Training Accuracy" width="450"/>
-  <img src="docs/training_loss.png" alt="Training Loss" width="450"/>
-</p>
-
-*Left: Training vs validation accuracy over 100 epochs. Right: Training vs validation loss convergence.*
 
 ### Computation Time (Table 4)
 
@@ -275,6 +212,4 @@ Output: Classified defect type D
 - **Hruthi Sri Gudavalli** — V R Siddhartha Engineering College
 - **Sai Manikanta Miriyala** — V R Siddhartha Engineering College
 
-## License
 
-MIT License
