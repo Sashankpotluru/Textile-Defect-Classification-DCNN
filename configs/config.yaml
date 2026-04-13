@@ -1,0 +1,73 @@
+# Textile Defect Classification Configuration
+
+# Dataset
+dataset:
+  root_dir: "data/raw"
+  image_size: 150
+  num_classes: 12
+  class_names:
+    - broken_end
+    - broken_yarn
+    - broken_pick
+    - weft_curling
+    - fuzzy_ball
+    - cut_selvage
+    - crease
+    - warp_ball
+    - knots
+    - contamination
+    - nep
+    - weft_crack
+  train_split: 0.6
+  val_split: 0.1
+  test_split: 0.3
+
+# Preprocessing
+preprocessing:
+  bilateral_filter:
+    d: 9
+    sigma_color: 75
+    sigma_space: 75
+
+# ResNet-50 Feature Extraction
+resnet50:
+  pretrained: true
+  freeze_backbone: false
+  feature_dim: 2048
+
+# YOLOv7 Detection
+yolov7:
+  model_size: "yolov8n"  # Using ultralytics YOLOv8-nano as proxy for tiny
+  conf_threshold: 0.25
+  iou_threshold: 0.45
+  image_size: 640
+
+# DCNN Classifier
+dcnn:
+  input_size: 150
+  conv_channels: [32, 64, 128]
+  kernel_sizes: [3, 3, 3]
+  pool_size: 2
+  fc_units: [256, 128, 64]
+  dropout: 0.5
+  num_classes: 12
+
+# Training
+training:
+  epochs: 100
+  batch_size: 32
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  scheduler:
+    type: "step"
+    step_size: 30
+    gamma: 0.1
+  early_stopping:
+    patience: 15
+    min_delta: 0.001
+
+# Paths
+paths:
+  checkpoint_dir: "checkpoints"
+  results_dir: "results"
+  logs_dir: "logs"
